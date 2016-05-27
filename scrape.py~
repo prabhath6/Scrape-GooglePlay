@@ -1,8 +1,0 @@
-import requests
-from bs4 import BeautifulSoup
-
-
-class GooglePlay:
-
-    def get_playstore_info(self):
-        pass
