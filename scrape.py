@@ -43,7 +43,7 @@ class GooglePlay:
         num_downloads = str(soup.find("div", {"itemprop": "numDownloads"}).text)
 
         # get last updated date
-        last_updated = str(soup.find("div", {"itemprop": "datePublished"}).text)
+        last_updated = str(soup.find("div", {"itemprop": "datePublished"}).text).replace(',', '')
 
         # number of downloads
         num_downloads_abs = num_downloads.split("-")[1]
