@@ -15,5 +15,4 @@ These scripts will scrape through the GooglePlay's website in order to get usefu
 ## Future Scope
 1. Use SQLAlchemy to insert this data into postgres database.
 2. Create a corn job to run these scripts every week or every 2 weeks.
-3. Create a dash board using the data and Flask.
 
