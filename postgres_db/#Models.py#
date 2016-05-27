@@ -1,0 +1,27 @@
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, Date
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.engine.url import URL
+import settings
+
+
+Base = declarative_base()
+
+def db_connect():
+    """
+    returns psql engine instance
+    """
+    return create_engine(URL(**settings.DATABASE))
+
+def create_table():
+    """
+    creates the tables
+    """
+    Base.metadata.create_all(engine)
+
+
+class App_metrics(Base):
+
+    __table__ = "messengers"
+    
+
+    

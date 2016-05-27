@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 from bs4 import BeautifulSoup
 
 
@@ -43,7 +44,7 @@ class GooglePlay:
         num_downloads = str(soup.find("div", {"itemprop": "numDownloads"}).text)
 
         # get last updated date
-        last_updated = str(soup.find("div", {"itemprop": "datePublished"}).text).replace(',', '')
+        last_updated = datetime.strptime(str(soup.find("div", {"itemprop": "datePublished"}).text).replace(',', ''), '%b %d %Y').strftime('%Y-%m-%d')
 
         # number of downloads
         num_downloads_abs = num_downloads.split("-")[1]
@@ -55,8 +56,8 @@ class GooglePlay:
         app_details['rating'] = ratingsValue
         app_details['rated_by'] = ratingsCount
         app_details['downloads'] = int(num_downloads_abs.replace(" ", "").replace(",", ""))
-        app_details['downloads_range_min'] = int(num_downloads.split("-")[0].strip(" ").replace(",", ""))
-        app_details['downloads_range_max'] = int(num_downloads.split("-")[1].strip(" ").replace(",", ""))
+        app_details['download_range_min'] = int(num_downloads.split("-")[0].strip(" ").replace(",", ""))
+        app_details['download_range_max'] = int(num_downloads.split("-")[1].strip(" ").replace(",", ""))
         app_details['last_updated'] = last_updated
         app_details['rating_one'] = stars[0]
         app_details['rating_two'] = stars[1]
