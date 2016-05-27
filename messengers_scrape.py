@@ -1,5 +1,3 @@
-from scrape import GooglePlay
-
 def get_data(messengers, playstore):
 
     final_data = dict()
@@ -10,7 +8,8 @@ def get_data(messengers, playstore):
 
     return final_data
 
-if __name__ == "__main__":
+
+def get_messengers():
 
     messengers = dict()
     messengers["whatsapp"]  = "com.whatsapp"
@@ -20,9 +19,5 @@ if __name__ == "__main__":
     messengers["hike"]      = "com.bsb.hike"
     messengers["telegram"]  = "org.telegram.messenger"
 
-    playstore = GooglePlay()
-
-    final_data = get_data(messengers, playstore)
-
-    print final_data
+    return messengers
     
